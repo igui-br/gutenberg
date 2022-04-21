@@ -123,6 +123,10 @@
 										"name": "core/comment-reply-link",
 										"isValid": true,
 										"attributes": {
+<<<<<<< HEAD:test/integration/fixtures/blocks/core__comments.json
+=======
+											"fontSize": "small",
+>>>>>>> 245e472321 (Rename block id and add fallback):test/integration/fixtures/blocks/core__comments-query-loop.json
 											"style": {
 												"elements": {
 													"link": {
