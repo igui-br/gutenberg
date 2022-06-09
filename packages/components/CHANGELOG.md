@@ -28,7 +28,7 @@
 -   `ExternalLink`: Convert to TypeScript ([#41681](https://github.com/WordPress/gutenberg/pull/41681)).
 -   `InputControl` updated to satisfy `react/exhuastive-deps` eslint rule ([#41601](https://github.com/WordPress/gutenberg/pull/41601))
 -   `Modal`: updated to satisfy `react/exhuastive-deps` eslint rule ([#41610](https://github.com/WordPress/gutenberg/pull/41610))
-
+-   `Navigation`: updated to satisfy `react/exhuastive-deps` eslint rule ([#41612](https://github.com/WordPress/gutenberg/pull/41612))
 
 ### Experimental
 
