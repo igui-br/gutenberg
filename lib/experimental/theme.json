@@ -248,8 +248,8 @@
 		"elements": {
 			"button": {
 				"color": {
-					"background": "styles.color.text",
-					"text": "styles.color.background"
+					"background": { "source": "styles.color.text" },
+					"text": { "source": "styles.color.background" }
 				}
 			}
 		}

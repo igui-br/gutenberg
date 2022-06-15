@@ -392,22 +392,17 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 	protected static function get_property_value( $styles, $path, $theme_json = null ) {
 		$value = _wp_array_get( $styles, $path, '' );
 
-		if ( '' === $value || is_array( $value ) ) {
-			return $value;
+		if( is_array( $value ) && array_key_exists( 'source', $value ) ) {
+			$value_path = explode( '.', $value['source'] );
+			$source_value = _wp_array_get( $theme_json, $value_path );
+			// Only use the source value if we find anything.
+			if ( ! empty( $source_value ) && is_string( $source_value ) ) {
+				$value = $source_value;
+			}
 		}
 
-		// If the value begins with styles then
-		// get the corresponding value from that place in theme.json.
-		$styles_prefix       = 'styles';
-		$styles_prefix_len   = strlen( $styles_prefix );
-		if ( 0 === strncmp( $value, $styles_prefix, $styles_prefix_len ) ) {
-			// Get the path of the style/setting.
-			$value_path = explode( '.', $value );
-			$new_value = _wp_array_get( $theme_json, $value_path );
-			// Only use the new value if we find anything.
-			if ( ! empty( $new_value ) && is_string( $new_value ) ) {
-				$value = $new_value;
-			}
+		if ( '' === $value || is_array( $value ) ) {
+			return $value;
 		}
 
 		// Convert custom CSS properties.
