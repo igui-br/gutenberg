@@ -383,7 +383,7 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 	 *
 	 * It also converts references to a path to the value
 	 * stored at that location, e.g.
-	 * styles.color.background => #fff
+	 * { "source": "style.color.background" } => "#fff".
 	 *
 	 * @param array $styles Styles subtree.
 	 * @param array $path   Which property to process.
@@ -392,6 +392,9 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 	protected static function get_property_value( $styles, $path, $theme_json = null ) {
 		$value = _wp_array_get( $styles, $path, '' );
 
+		// This converts references to a path to the value at that path
+		// where the values is an array with a "source" key, pointing to a path.
+		// For example: { "source": "style.color.background" } => "#fff".
 		if( is_array( $value ) && array_key_exists( 'source', $value ) ) {
 			$value_path = explode( '.', $value['source'] );
 			$source_value = _wp_array_get( $theme_json, $value_path );
