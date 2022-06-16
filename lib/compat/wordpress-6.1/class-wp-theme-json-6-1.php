@@ -399,6 +399,12 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 			if ( ! empty( $source_value ) && is_string( $source_value ) ) {
 				$value = $source_value;
 			}
+
+			if ( is_array( $source_value ) && array_key_exists( 'source', $source_value ) ) {
+				$path_string = json_encode( $path );
+				$source_value_string = json_encode( $source_value );
+				_doing_it_wrong( 'get_property_value', "Your theme.json file uses a dynamic value (${source_value_string}) for the path at ${path_string}. Please update this to point to the value at ${source_value_string}.", '6.1.0' );
+			}
 		}
 
 		if ( '' === $value || is_array( $value ) ) {
