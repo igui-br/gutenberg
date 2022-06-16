@@ -383,7 +383,7 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 	 *
 	 * It also converts references to a path to the value
 	 * stored at that location, e.g.
-	 * { "source": "style.color.background" } => "#fff".
+	 * { "ref": "style.color.background" } => "#fff".
 	 *
 	 * @param array $styles Styles subtree.
 	 * @param array $path   Which property to process.
@@ -393,20 +393,20 @@ class WP_Theme_JSON_6_1 extends WP_Theme_JSON_6_0 {
 		$value = _wp_array_get( $styles, $path, '' );
 
 		// This converts references to a path to the value at that path
-		// where the values is an array with a "source" key, pointing to a path.
-		// For example: { "source": "style.color.background" } => "#fff".
-		if( is_array( $value ) && array_key_exists( 'source', $value ) ) {
-			$value_path = explode( '.', $value['source'] );
-			$source_value = _wp_array_get( $theme_json, $value_path );
-			// Only use the source value if we find anything.
-			if ( ! empty( $source_value ) && is_string( $source_value ) ) {
-				$value = $source_value;
+		// where the values is an array with a "ref" key, pointing to a path.
+		// For example: { "ref": "style.color.background" } => "#fff".
+		if( is_array( $value ) && array_key_exists( 'ref', $value ) ) {
+			$value_path = explode( '.', $value['ref'] );
+			$ref_value = _wp_array_get( $theme_json, $value_path );
+			// Only use the ref value if we find anything.
+			if ( ! empty( $ref_value ) && is_string( $ref_value ) ) {
+				$value = $ref_value;
 			}
 
-			if ( is_array( $source_value ) && array_key_exists( 'source', $source_value ) ) {
+			if ( is_array( $ref_value ) && array_key_exists( 'ref', $ref_value ) ) {
 				$path_string = json_encode( $path );
-				$source_value_string = json_encode( $source_value );
-				_doing_it_wrong( 'get_property_value', "Your theme.json file uses a dynamic value (${source_value_string}) for the path at ${path_string}. Please update this to point to the value at ${source_value_string}.", '6.1.0' );
+				$ref_value_string = json_encode( $ref_value );
+				_doing_it_wrong( 'get_property_value', "Your theme.json file uses a dynamic value (${ref_value_string}) for the path at ${path_string}. Please update this to point to the value at ${ref_value_string}.", '6.1.0' );
 			}
 		}
 
