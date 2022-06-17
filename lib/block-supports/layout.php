@@ -151,7 +151,7 @@ function gutenberg_get_layout_style( $selector, $layout, $has_block_gap_support 
  * have the style engine generate a more extensive list of utility classnames which
  * will then replace this method.
  *
- * @param array $layout   			Array of layout attributes for the current block.
+ * @param array $layout             Array of layout attributes for the current block.
  * @param array $layout_definitions Array of layout definitions.
  *
  * @return array Array of CSS classname strings.
