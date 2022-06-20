@@ -68,11 +68,8 @@ export function convertLegacyBlockNameAndAttributes( name, attributes ) {
 	}
 	if ( name === 'core/comments-query-loop' ) {
 		name = 'core/comments';
-<<<<<<< HEAD
 		// Note that we also had to add a deprecation to the block in order to remove the old,
 		// generated `wp-block-comments-query-loop` class name.
-=======
->>>>>>> 245e472321 (Rename block id and add fallback)
 	}
 
 	return [ name, newAttributes ];
