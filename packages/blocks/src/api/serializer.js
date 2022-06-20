@@ -137,6 +137,9 @@ export function getSaveElement(
 
 	blockPropsProvider.blockType = blockType;
 	blockPropsProvider.attributes = attributes;
+	// Debugging: Empty InnerBlocks on Site Editor, while it has items on post Editor.
+	// Having the same block structure on both site and post editor.
+	// Delete these lines before merging the PR when discovered the reason.
 	innerBlocksPropsProvider.innerBlocks = innerBlocks;
 
 	let element = save( { attributes, innerBlocks } );
