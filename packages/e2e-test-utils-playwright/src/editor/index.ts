@@ -52,14 +52,14 @@ export class Editor {
 
 		return frame;
 	}
-	clickBlockOptionsMenuItem = clickBlockOptionsMenuItem;
-	clickBlockToolbarButton = clickBlockToolbarButton;
-	getEditedPostContent = getEditedPostContent;
-	insertBlock = insertBlock;
-	openDocumentSettingsSidebar = openDocumentSettingsSidebar;
-	openPreviewPage = openPreviewPage;
-	saveSiteEditorEntities = saveSiteEditorEntities;
-	selectBlocks = selectBlocks;
-	showBlockToolbar = showBlockToolbar;
-	transformBlockTo = transformBlockTo;
+	clickBlockOptionsMenuItem = clickBlockOptionsMenuItem.bind( this );
+	clickBlockToolbarButton = clickBlockToolbarButton.bind( this );
+	getEditedPostContent = getEditedPostContent.bind( this );
+	insertBlock = insertBlock.bind( this );
+	openDocumentSettingsSidebar = openDocumentSettingsSidebar.bind( this );
+	openPreviewPage = openPreviewPage.bind( this );
+	saveSiteEditorEntities = saveSiteEditorEntities.bind( this );
+	selectBlocks = selectBlocks.bind( this );
+	showBlockToolbar = showBlockToolbar.bind( this );
+	transformBlockTo = transformBlockTo.bind( this );
 }
